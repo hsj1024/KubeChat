@@ -172,3 +172,35 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Node.js / React 관련 파일 (프론트엔드)
+node_modules/
+npm-debug.log
+yarn-error.log
+*.log
+dist/
+build/
+
+# Docker 관련 파일
+docker-compose.override.yml
+.dockerignore
+*.tar
+*.img
+
+# VSCode 설정 파일
+.vscode/
+.idea/
+
+# Kubernetes 관련 파일 (로컬 캐시)
+k8s/*.log
+.kube/
+
+# 환경 설정 파일 (API 키 등 민감한 정보)
+.env
+.env.local
+.env.production
+.env.development
+
+# OS 관련 파일
+.DS_Store
+Thumbs.db
