@@ -1,0 +1,74 @@
+# Python 관련 파일
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*$py.class
+
+# 가상 환경 (venv)
+venv/
+.env
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# 환경 변수 파일 (민감한 정보)
+.env
+.env.local
+.env.production
+.env.development
+
+# 빌드 및 배포 관련 파일
+build/
+dist/
+*.egg-info/
+.installed.cfg
+*.egg
+wheels/
+*.manifest
+*.spec
+
+# Python 패키지 관련
+pip-log.txt
+pip-delete-this-directory.txt
+
+# 테스트 관련 파일
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# 데이터베이스 파일 (SQLite)
+db.sqlite3
+db.sqlite3-journal
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# VSCode / JetBrains IDE 관련
+.vscode/
+.idea/
+
+# OS 관련 파일
+.DS_Store
+Thumbs.db
+
+# Docker 관련 파일
+docker-compose.override.yml
+.dockerignore
+*.tar
+*.img
+
+# Kubernetes 관련 파일 (로컬 캐시)
+k8s/*.log
+.kube/
