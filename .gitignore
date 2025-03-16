@@ -194,12 +194,13 @@ docker-compose.override.yml
 # Kubernetes 관련 파일 (로컬 캐시)
 k8s/*.log
 .kube/
-
+k8s/secrets.yaml
 # 환경 설정 파일 (API 키 등 민감한 정보)
 .env
 .env.local
 .env.production
 .env.development
+secrets.yaml
 
 # OS 관련 파일
 .DS_Store
