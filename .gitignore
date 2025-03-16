@@ -182,6 +182,8 @@ dist/
 build/
 
 # Docker 관련 파일
+.docker/
+.dockerignore
 docker-compose.override.yml
 .dockerignore
 *.tar
@@ -195,6 +197,16 @@ docker-compose.override.yml
 k8s/*.log
 .kube/
 k8s/secrets.yaml
+
+# Kubernetes Minikube 및 K3s 캐시
+.kube/
+minikube/
+k3s/
+
+# Helm 관련 파일
+.helm/
+helm-charts/
+
 # 환경 설정 파일 (API 키 등 민감한 정보)
 .env
 .env.local
