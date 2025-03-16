@@ -1,0 +1,31 @@
+name: CI/CD for KubeChat
+
+on:
+  push:
+    branches:
+      - main  # main 브랜치에 Push될 때 실행
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 코드 체크아웃
+        uses: actions/checkout@v3
+
+      - name: Docker 로그인
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      - name: 백엔드 Docker 이미지 빌드 및 푸시
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/kubechat-backend:latest ./backend
+          docker push ${{ secrets.DOCKER_USERNAME }}/kubechat-backend:latest
+
+      - name: 프론트엔드 Docker 이미지 빌드 및 푸시
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/kubechat-frontend:latest ./frontend
+          docker push ${{ secrets.DOCKER_USERNAME }}/kubechat-frontend:latest
+
+      - name: Kubernetes 배포 적용
+        run: |
+          echo "${{ secrets.KUBECONFIG }}" | base64 --decode > kubeconfig.yaml
+          kubectl --kubeconfig=kubeconfig.yaml apply -f k8s/
