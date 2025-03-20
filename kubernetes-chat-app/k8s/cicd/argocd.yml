@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kubechat
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/hsj1024/KubeChat.git'
+    path: k8s
+    targetRevision: main
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kubechat
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
