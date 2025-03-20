@@ -2,8 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
-  labels:
-    app: frontend
+  namespace: chat-app
 spec:
   replicas: 2
   selector:
@@ -16,9 +15,9 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: myrepo/kubechat-frontend:latest
+          image: hsj1024/kubechat-frontend:latest
           ports:
-            - containerPort: 3000
+            - containerPort: 80
           envFrom:
             - configMapRef:
                 name: frontend-config
@@ -33,12 +32,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend-service
+  name: frontend
+  namespace: chat-app
 spec:
   selector:
     app: frontend
   ports:
     - protocol: TCP
-      port: 3000
-      targetPort: 3000
-  type: LoadBalancer
+      port: 80
+      targetPort: 80
+  type: ClusterIP
